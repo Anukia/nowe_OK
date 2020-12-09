@@ -7,8 +7,8 @@
 using namespace std;
 
 void zachlannie_1(int& procesy, int& zadania, vector<int>& lista, vector<vector<int>>& rozwiazanie) {
-   /* merge_sort(lista, 0, lista.size() - 1);
-    vector <int> wektory[procesy];
+    merge_sort(lista, 0, lista.size() - 1);
+    vector<vector<int>> wektory;
     for (int i = 0; i < procesy; i++) {
         wektory[i].push_back(0);
     }
@@ -24,14 +24,14 @@ void zachlannie_1(int& procesy, int& zadania, vector<int>& lista, vector<vector<
     }
 
     for (int i = 0; i < procesy; i++)
-        rozwiazanie.push_back(wektory[i]);*/
+        rozwiazanie.push_back(wektory[i]);
 
 }
 
 
 void zachlannie_2(int& procesy, int& zadania, vector<int>& lista, vector<vector<int>>& rozwiazanie) {
-    /*merge_sort(lista, 0, lista.size() - 1);
-    vector <int> wektory[procesy];
+    merge_sort(lista, 0, lista.size() - 1);
+    vector<vector<int>> wektory;
     for (int i = 0; i < procesy; i++) {
         wektory[i].push_back(0);
     }
@@ -47,6 +47,6 @@ void zachlannie_2(int& procesy, int& zadania, vector<int>& lista, vector<vector<
     }
 
     for (int i = 0; i < procesy; i++)
-        rozwiazanie.push_back(wektory[i]);*/
+        rozwiazanie.push_back(wektory[i]);
 
 }
