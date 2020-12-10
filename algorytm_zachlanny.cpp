@@ -10,7 +10,9 @@ void zachlannie_1(int& procesy, int& zadania, vector<int>& lista, vector<vector<
     merge_sort(lista, 0, lista.size() - 1);
     vector<vector<int>> wektory;
     for (int i = 0; i < procesy; i++) {
-        wektory[i].push_back(0);
+        vector<int> tmp;
+        tmp.push_back(0);
+        wektory.push_back(tmp);
     }
     for (int i = 0; i < lista.size(); i++) {
         int indeks = 0, min_wartosc = wektory[0][0];
@@ -33,7 +35,9 @@ void zachlannie_2(int& procesy, int& zadania, vector<int>& lista, vector<vector<
     merge_sort(lista, 0, lista.size() - 1);
     vector<vector<int>> wektory;
     for (int i = 0; i < procesy; i++) {
-        wektory[i].push_back(0);
+        vector<int> tmp;
+        tmp.push_back(0);
+        wektory.push_back(tmp);
     }
     for (int i = lista.size() - 1; i >= 0; i--) {
         int indeks = 0, min_wartosc = wektory[0][0];

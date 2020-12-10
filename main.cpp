@@ -31,12 +31,6 @@ int main()
         }
         else if (wybor == "3") {
             dane_z_pliku(liczba_procesow, liczba_zadan, lista_zadan);
-            /*
-            cout << liczba_procesow << endl << liczba_zadan << endl;
-            for(int i = 0; i < lista_zadan.size(); i ++){
-                cout << lista_zadan[i] << endl;
-            }
-            */
         }
         else if (wybor == "4") {
             return 0;
