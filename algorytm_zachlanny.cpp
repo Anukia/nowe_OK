@@ -27,7 +27,30 @@ void zachlannie_1(int& procesy, int& zadania, vector<int>& lista, vector<vector<
 
     for (int i = 0; i < procesy; i++)
         rozwiazanie.push_back(wektory[i]);
+}
 
+void zachlannie_1_genetic(int l_procesorow, int zadania, vector<int> lista, vector<int>& czasy, vector<int>& rozwiazanie)
+{
+    merge_sort(lista, 0, lista.size() - 1);
+    for (int i = 0; i < l_procesorow; i++) czasy.push_back(0);
+
+    int min_czas = 99999999999; int procesor = 0;
+    for (int i = 0; i < lista.size(); i++)
+    {
+        for (int j = 0; j<l_procesorow; j++) 
+            if (min_czas > czasy[j])
+            {
+                min_czas = czasy[j];
+                procesor = j;
+            }
+        rozwiazanie.push_back(procesor);
+        czasy[procesor] += lista[i];
+        min_czas = czasy[procesor];
+    }
+    cout << "rozwiazanie:" << endl;
+    for (auto i : rozwiazanie) cout << i << endl;
+    cout << "czasy" << endl;
+    for (auto i : czasy) cout << i << endl;
 }
 
 
@@ -52,5 +75,28 @@ void zachlannie_2(int& procesy, int& zadania, vector<int>& lista, vector<vector<
 
     for (int i = 0; i < procesy; i++)
         rozwiazanie.push_back(wektory[i]);
+}
 
+void zachlannie_2_genetic(int l_procesorow, int zadania, vector<int> lista, vector<int>& czasy, vector<int>& rozwiazanie)
+{
+    merge_sort(lista, 0, lista.size() - 1);
+    for (int i = 0; i < l_procesorow; i++) czasy[i] = 0;
+
+    int min_czas = 99999999999; int procesor = 0;
+    for (int i = lista.size() - 1; i >= 0; i--)
+    {
+        for (int j = 0; j < l_procesorow; j++)
+            if (min_czas > czasy[j])
+            {
+                min_czas = czasy[j];
+                procesor = j;
+            }
+        rozwiazanie.push_back(procesor);
+        czasy[procesor] += lista[i];
+        min_czas = czasy[procesor];
+    }
+    cout << "rozwiazanie:" << endl;
+    for (auto i : rozwiazanie) cout << i << endl;
+    cout << "czasy" << endl;
+    for (auto i : czasy) cout << i << endl;
 }

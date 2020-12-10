@@ -5,6 +5,7 @@
 #include "plik_i_recznie.h"
 #include "funkcje.h"
 #include "algorytm_zachlanny.h"
+#include "genetyczny.h"
 using namespace std;
 
 int main()
@@ -16,6 +17,7 @@ int main()
     int liczba_procesow = 0;
     int liczba_zadan = 0;
     bool pokaz_optymalne_rozwiazanie = false;
+
     cout << "1 = Generator." << endl;
     cout << "2 = Wprowadz dane recznie." << endl;
     cout << "3 = Pobierz dane z pliku." << endl;
@@ -41,16 +43,21 @@ int main()
     } while (wybor != "1" and wybor != "2" and wybor != "3");
     cout << "1 = Algorytm zachlanny wykorzystywujac sortowanie rosnaco." << endl;
     cout << "2 = Algorytm zachlanny wykorzystywujac sortowanie malejaco." << endl;
-    cout << "3 = Wyjdz z programu." << endl;
+    cout << "3 = Algorytm genetyczny." << endl;
+    cout << "4 = Wyjdz z programu." << endl;
     do {
         cout << "Wybierz: "; getline(cin, wybor); cout << endl;
         if (wybor == "1") {
             zachlannie_1(liczba_procesow, liczba_zadan, lista_zadan, zachlanne_rozwiazanie);
+            genetyczny(liczba_procesow, liczba_zadan, lista_zadan);
         }
         else if (wybor == "2") {
             zachlannie_2(liczba_procesow, liczba_zadan, lista_zadan, zachlanne_rozwiazanie);
         }
         else if (wybor == "3") {
+            //funkcja do genetycznej;
+        }
+        else if (wybor == "4") {
             return 0;
         }
         else {
