@@ -1,22 +1,19 @@
 #include "genetyczny.h"
 #include "algorytm_zachlanny.h"
 #include "DNA.h"
+#include "zadanie.h"
 #include <vector>
 
 using namespace std;
 
-int genetyczny(int l_procesorow, int zadania, vector<int> lista)
+int genetyczny(int liczba_procesorow, int liczba_zadan, vector<int> lista)
 {
 	vector<DNA>* stare_pokolenie;
 	vector<DNA>* nowe_pokolenie;
-	
-	vector<int> czasy_tmp, rozwiazanie_tmp;
-	zachlannie_1_genetic(l_procesorow, zadania, lista, czasy_tmp, rozwiazanie_tmp);
-	stare_pokolenie->push_back(*new DNA(czasy_tmp, rozwiazanie_tmp));
-	czasy_tmp.clear(); rozwiazanie_tmp.clear();
-	zachlannie_2_genetic(l_procesorow, zadania, lista, czasy_tmp, rozwiazanie_tmp);
-	stare_pokolenie->push_back(*new DNA(czasy_tmp, rozwiazanie_tmp));
+	vector<zadanie>* lista_zadan;
+	for (int i = 0; i < lista.size(); i++) *lista_zadan->push_back(*new zadanie(i, lista[i]));
 
+	
 
 	return 0;
 }
