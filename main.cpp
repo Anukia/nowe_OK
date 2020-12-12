@@ -45,7 +45,7 @@ int main()
     cout << "2 = Wyjdz z programu." << endl;
     do {
         cout << "Wybierz: "; getline(cin, wybor); cout << endl;
-        if (wybor == "1") genetyczny(liczba_procesow, liczba_procesow, lista_zadan);
+        if (wybor == "1") genetyczny(liczba_procesow, liczba_zadan, lista_zadan);
         else if (wybor == "2") return 0;
         else {
             cout << "Nie istnieje taka opcja." << endl;

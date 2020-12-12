@@ -1,14 +1,17 @@
 #pragma once
 #include <vector>
+#include "zadanie.h"
 
 using namespace std;
 
 class DNA //reprezentacja 1 osobnika
 {
 public:
-	DNA();
+	DNA(vector<zadanie*> p_posort_zad, int liczba_procesorow);
 	~DNA();
-
-private:
-
+	
+	vector<zadanie*> posort_zad;
+	int fitness;
+	
+	int find_fitness(int liczba_procesorow);	//przyporz¹dkowuje zadania do procesora i wyznacza dopasowanie (najd³u¿szy czas);
 };
