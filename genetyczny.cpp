@@ -5,6 +5,7 @@
 #include "genetyczny.h"
 #include "algorytm_zachlanny.h"
 #include "DNA.h"
+#include "funkcje.h"
 
 using namespace std;
 
@@ -31,11 +32,16 @@ void crossover(DNA* rodzic1, DNA* rodzic2, vector<zadanie*>&dziecko)
 	vector<zadanie*> rozwiazanie;
 	int l_zadan = rodzic1->posort_zad.size();
 	vector<int>wdziecku(l_zadan, 0);
+	if (rand() % 100 == 1)
+	{
+		create_rnd(rodzic1->posort_zad, dziecko);
+		//cout << "rand" << endl;
+		return;
+	}
 	for (int i = 0; i < l_zadan; i++)
 	{
 		dziecko.push_back(nullptr);
 	}
-	srand(time(nullptr));
 	for (int i = 0; i < l_zadan; i++) ktory.push_back(rand() % 2);
 	for (int i = 0; i < l_zadan; i++)
 	{
@@ -71,9 +77,11 @@ void crossover(DNA* rodzic1, DNA* rodzic2, vector<zadanie*>&dziecko)
 			pozostale.push_back(rodzic1->posort_zad[i]);
 		}
 	}
+	
 	if (pozostale.size())
 	{
-		create_rnd(pozostale, rozwiazanie);
+		//create_rnd(pozostale, rozwiazanie);
+		malejaco(pozostale, rozwiazanie);
 	}
 	for (int i = 0; i < rozwiazanie.size(); i++)
 	{
@@ -100,14 +108,21 @@ DNA* najlepszywpokoleniu(vector<DNA*> pokolenie)
 	return best;
 }
 
-void kazdepokoleniemawlasnyczas(vector<DNA*> stare_pokolenie, vector<DNA*>& nowe_pokolenie, int liczba_procesorow)
+void kazdepokoleniemawlasnyczas(vector<DNA*> stare_pokolenie, vector<DNA*>& nowe_pokolenie, int liczba_procesorow) //spróbuj przeczytaæ nie œpiewaj¹c challenge
 {
 	vector<zadanie*> lista_dla_dziecka;
 	DNA* najlepszystary = najlepszywpokoleniu(stare_pokolenie);
 	DNA* dziecko;
 	for (int i = 0; i < stare_pokolenie.size(); i++)
 	{
-		crossover(najlepszystary, stare_pokolenie[i], lista_dla_dziecka);
+		if (stare_pokolenie[i] == najlepszystary)
+		{
+			lista_dla_dziecka = najlepszystary->posort_zad;
+		}
+		else
+		{
+			crossover(najlepszystary, stare_pokolenie[i], lista_dla_dziecka);
+		}
 		dziecko = new DNA(lista_dla_dziecka, liczba_procesorow);
 		nowe_pokolenie.push_back(dziecko);
 		//cout << dziecko->fitness << endl;
@@ -123,19 +138,17 @@ void przepisaniepokolen(vector<DNA*>& stare_pokolenie, vector<DNA*> nowe_pokolen
 	}
 }
 
-void genetyczny(int liczba_procesorow, int liczba_zadan, vector<int> lista)
+void genetyczny(int liczba_procesorow, int liczba_zadan, vector<int> lista, int liczba_w_pokoleniu)
 {
 	srand(time(nullptr));
 	vector<DNA*> stare_pokolenie;
 	vector<DNA*> nowe_pokolenie;
 	vector<zadanie*> lista_zadan;
-	const int liczba_w_pokoleniu = 100;
-	const int liczba_pokolen = 100;
-
+	const int liczba_pokolen = 350; //31500/liczba_w_pokoleniu;
 	zachlannie_1_genetic(lista, lista_zadan);
 	stare_pokolenie.push_back(new DNA(lista_zadan, liczba_procesorow));
 	vector<zadanie*> rand_tmp;
-	for (int i = 0; i < liczba_w_pokoleniu -1; i++)
+	for (int i = 0; i < liczba_w_pokoleniu - 1; i++)
 	{
 		create_rnd(lista_zadan, rand_tmp);
 		stare_pokolenie.push_back(new DNA(rand_tmp, liczba_procesorow));
@@ -149,4 +162,5 @@ void genetyczny(int liczba_procesorow, int liczba_zadan, vector<int> lista)
 		przepisaniepokolen(stare_pokolenie, nowe_pokolenie);
 		nowe_pokolenie.clear();
 	}
+	//cout << "Liczba w pokoleniu: " << liczba_w_pokoleniu << ":" << najlepszywpokoleniu(stare_pokolenie)->fitness << endl;
 }

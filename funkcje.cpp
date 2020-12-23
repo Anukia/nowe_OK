@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "zadanie.h"
 using namespace std;
 
 bool isNumeric(string str) {
@@ -68,5 +69,23 @@ void merge_sort(vector<int>& table, int left, int right) {
         merge_sort(table, left, middle);
         merge_sort(table, middle + 1, right);
         merge(table, left, middle, right);
+    }
+}
+
+void malejaco(vector <zadanie*> lista, vector<zadanie*> &rozwiazanie)
+{
+    int min_t = 9999999999;
+    int min_zad;
+    zadanie* tmp;
+    for (auto i : lista) rozwiazanie.push_back(i);
+    for (int i = 0; i < lista.size()-1; i++)
+    {
+        for(int j=i+1; j<lista.size(); j++)
+            if (rozwiazanie[j]->czas > rozwiazanie[i]->czas)
+            {
+                tmp = rozwiazanie[i];
+                rozwiazanie[i] = rozwiazanie[j];
+                rozwiazanie[j] = tmp;
+            }
     }
 }

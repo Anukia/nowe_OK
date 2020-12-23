@@ -5,6 +5,7 @@
 #include <string>
 #include "funkcje.h"
 #include "algorytm_zachlanny.h"
+#include "zadanie.h"
 using namespace std;
 
 void zachlannie_1_genetic(vector<int> lista, vector<zadanie*> &rozwiazanie)
