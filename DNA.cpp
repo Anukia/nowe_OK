@@ -1,5 +1,6 @@
 #include "DNA.h"
 #include <iostream>
+#include "zadanie.h"
 
 using namespace std;
 
@@ -35,4 +36,6 @@ int DNA::find_fitness(int liczba_procesorow)
 	}
 	fitness = max;
 	return fitness;
+}
+DNA::~DNA(){
 }

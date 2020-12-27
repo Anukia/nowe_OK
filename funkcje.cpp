@@ -74,8 +74,6 @@ void merge_sort(vector<int>& table, int left, int right) {
 
 void malejaco(vector <zadanie*> lista, vector<zadanie*> &rozwiazanie)
 {
-    int min_t = 9999999999;
-    int min_zad;
     zadanie* tmp;
     for (auto i : lista) rozwiazanie.push_back(i);
     for (int i = 0; i < lista.size()-1; i++)
@@ -88,4 +86,15 @@ void malejaco(vector <zadanie*> lista, vector<zadanie*> &rozwiazanie)
                 rozwiazanie[j] = tmp;
             }
     }
+}
+
+void zapisz(int& liczba_procesow, int& liczba_zadan, vector<int>& lista_zadan){
+    fstream plik;
+    string nazwa_pliku;
+    cout << "Podaj sciezke do pliku: "; getline(cin, nazwa_pliku); cout << endl;
+    plik.open(nazwa_pliku, ios::out);
+    plik << liczba_procesow << "\n" << liczba_zadan << "\n";
+    for(auto i : lista_zadan) plik << i << "\n";
+    cout << "Utworzono plik\n\n";
+
 }

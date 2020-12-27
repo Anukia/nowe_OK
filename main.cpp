@@ -20,7 +20,8 @@ int main()
     cout << "1 = Generator." << endl;
     cout << "2 = Wprowadz dane recznie." << endl;
     cout << "3 = Pobierz dane z pliku." << endl;
-    cout << "4 = Wyjdz z programu." << endl;
+    cout << "4 = Wygeneruj i zapisz." << endl;
+    cout << "5 = Wyjdz z programu." << endl;
     do {
         cout << "Wybierz: "; getline(cin, wybor); cout << endl;
         if (wybor == "1") {
@@ -34,12 +35,17 @@ int main()
             dane_z_pliku(liczba_procesow, liczba_zadan, lista_zadan);
         }
         else if (wybor == "4") {
+            generator(liczba_procesow, liczba_zadan, lista_zadan, optymalne_rozwiazanie);
+            zapisz(liczba_procesow, liczba_zadan, lista_zadan);\
+            pokaz_optymalne_rozwiazanie = true;
+        }
+        else if (wybor == "5") {
             return 0;
         }
         else {
             cout << "Nie istnieje taka opcja." << endl;
         }
-    } while (wybor != "1" and wybor != "2" and wybor != "3");
+    } while (wybor != "1" and wybor != "2" and wybor != "3" and wybor != "4");
     
     cout << "1 = Algorytm genetyczny." << endl;
     cout << "2 = Wyjdz z programu." << endl;
@@ -47,13 +53,7 @@ int main()
         cout << "Wybierz: "; getline(cin, wybor); cout << endl;
         if (wybor == "1")
         {
-            //for (int i = 120; i < 160; i += 10)
-            //{
-            //    genetyczny(liczba_procesow, liczba_zadan, lista_zadan, i);
-            //    genetyczny(liczba_procesow, liczba_zadan, lista_zadan, i);
-            //    genetyczny(liczba_procesow, liczba_zadan, lista_zadan, i);
-            //}
-            genetyczny(liczba_procesow, liczba_zadan, lista_zadan, 90);
+            genetyczny(liczba_procesow, liczba_zadan, lista_zadan, 100);
         }
         else if (wybor == "2") return 0;
         else {

@@ -85,7 +85,6 @@ void generator(int& procesy, int& zadania, vector<int>& wektor, vector<vector<in
                 za_duzo(suma, helper);
             }
             rozwiazanie.push_back(helper);
-            // int ile_razem = 0; // usunac
             for (int j = 0; j < helper.size(); j++) {
                 wektor.push_back(helper[j]);
             }

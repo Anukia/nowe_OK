@@ -14,6 +14,7 @@ using namespace std;
 
 void genetyczny(int procesy, int zadania, vector<int> lista, int liczba_w_pokoleniu);
 void create_rnd(vector<zadanie*> lista_zadan, vector<zadanie*>& rozwiazanie);
+void mulation(vector<zadanie*> lista_zadan, vector<zadanie*>& rozwiazanie);
 void crossover(DNA* rodzic1, DNA* rodzic2, vector<zadanie*>&dziecko);
 void kazdepokoleniemawlasnyczas(vector<DNA*> stare_pokolenie, vector<DNA*>& nowe_pokolenie, int liczba_procesorow);
 DNA* najlepszywpokoleniu(vector<DNA*> pokolenie);
